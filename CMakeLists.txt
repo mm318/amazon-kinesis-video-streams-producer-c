@@ -6,9 +6,9 @@ project(KinesisVideoProducerC LANGUAGES C)
 # User Flags
 option(ADD_MUCLIBC "Add -muclibc c flag" OFF)
 option(BUILD_DEPENDENCIES "Whether or not to build depending libraries from source" ON)
-option(USE_OPENSSL "Use openssl as crypto library" ON)
+option(USE_OPENSSL "Use openssl as crypto library" OFF)
 option(BUILD_COMMON_LWS "Whether or not to build ProducerC libwebsockets common library" OFF)
-option(BUILD_COMMON_CURL "Whether or not to build ProducerC curl common library" ON)
+option(BUILD_COMMON_CURL "Whether or not to build ProducerC curl common library" OFF)
 option(BUILD_OPENSSL_PLATFORM "If buildng OpenSSL what is the target platform" OFF)
 
 # Developer Flags
@@ -67,8 +67,6 @@ if(BUILD_DEPENDENCIES)
     set(BUILD_ARGS -DBUILD_STATIC=${BUILD_STATIC}
                    -DBUILD_OPENSSL_PLATFORM=${BUILD_OPENSSL_PLATFORM})
     build_dependency(openssl ${BUILD_ARGS})
-  else()
-    message(FATAL_ERROR "No crypto library selected.")
   endif()
 
   if (BUILD_COMMON_LWS)
