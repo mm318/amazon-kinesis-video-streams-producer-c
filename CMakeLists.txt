@@ -116,8 +116,6 @@ if(USE_OPENSSL)
 elseif(USE_MBEDTLS)
   find_package(MbedTLS REQUIRED)
   set(OPEN_SRC_INCLUDE_DIRS ${OPEN_SRC_INCLUDE_DIRS} ${MBEDTLS_INCLUDE_DIRS})
-else()
-  message(FATAL_ERROR "No crypto library selected.")
 endif()
 
 if(BUILD_COMMON_CURL)
